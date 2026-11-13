@@ -29,7 +29,7 @@ pnpm theme:check ../multica-mavericks                        # validator and WCA
 pnpm theme:preview ../multica-mavericks --out screenshots    # light.png and dark.png
 ```
 
-To release, bump `version` in `manifest.json`, tag the commit with the same version (`v1.0.2`), and push the tag. The release workflow attaches `theme.zip`.
+To release, bump `version` in `manifest.json`, tag the commit with the same version (`v1.0.3`), and push the tag. The release workflow attaches `theme.zip`.
 
 ## License
 

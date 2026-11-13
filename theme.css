@@ -362,9 +362,14 @@
   background-color: var(--sidebar);
 }
 
+/* Text inside the selection is white, including a running issue's shimmer,
+   which reads --faint-foreground at rest and --foreground for its highlight. */
 :root [data-mc="nav-item"][data-active="true"] {
+  --foreground: #ffffff;
+  --muted-foreground: rgb(255 255 255 / 0.85);
+  --faint-foreground: rgb(255 255 255 / 0.8);
   font-weight: 700;
-  text-shadow: 0 1px 1px rgb(0 0 0 / 0.25);
+  text-shadow: 0 1px 0 rgb(0 0 0 / 0.18);
 }
 
 /* Native checkboxes and the app's checkbox take the selection colour, not black. */
@@ -445,7 +450,7 @@
 }
 
 :root[data-theme-option-glossy]:not(.is-focused) [data-mc="nav-item"][data-active="true"] {
-  background-image: linear-gradient(#a9b4c3, #8a97a8);
+  background-image: linear-gradient(#7f8b9c, #66727f);
   box-shadow: none;
 }
 
