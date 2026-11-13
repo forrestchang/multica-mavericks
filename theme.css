@@ -1,0 +1,543 @@
+/*
+ * Mavericks: OS X 10.9 (2013), the last Aqua release before Yosemite went flat.
+ * Skeuomorphic textures are gone, but the gradients, Lucida Grande and the
+ * Aqua blue selection stay. Mavericks had no dark mode; dark follows its HUD
+ * panels and the charcoal behind Mission Control and Notification Center.
+ */
+
+/* Shape and type, shared by both modes. */
+.theme-light,
+.theme-dark {
+  --font-ui: "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneva, Verdana;
+  --font-mono: Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+  --text-micro: calc(10px * var(--font-scale, 1));
+  --text-micro--line-height: calc(13px * var(--font-scale, 1));
+  --text-caption: calc(11px * var(--font-scale, 1));
+  --text-caption--line-height: calc(14px * var(--font-scale, 1));
+  --text-label: calc(12px * var(--font-scale, 1));
+  --text-label--line-height: calc(16px * var(--font-scale, 1));
+  --text-body: calc(13px * var(--font-scale, 1));
+  --text-body--line-height: calc(18px * var(--font-scale, 1));
+  --text-body-lg: calc(14px * var(--font-scale, 1));
+  --text-body-lg--line-height: calc(20px * var(--font-scale, 1));
+  --icon-stroke-width: 1.75;
+
+  --radius: 0.25rem;
+  --button-radius: 4px;
+  --button-radius-sm: 4px;
+  --input-radius: 2px;
+  --card-radius: 5px;
+  --menu-radius: 5px;
+  --menu-item-radius: 0;
+  --popover-radius: 6px;
+  --dialog-radius: 5px;
+  --tooltip-radius: 0;
+  --page-radius: 5px;
+  --rail-item-radius: 5px;
+  --nav-item-radius: 3px;
+  --nav-item-height: 1.75rem;
+  --issue-row-height: 32px;
+  --issue-group-header-height: 2rem;
+  --issue-group-header-radius: 0;
+  --board-column-radius: 5px;
+  --board-card-radius: 4px;
+  --label-radius: calc(infinity * 1px);
+
+  --h1-size: 1.6em;
+  --h2-size: 1.3em;
+  --h3-size: 1.1em;
+  --h1-weight: 700;
+  --h2-weight: 700;
+  --h3-weight: 700;
+  --h4-weight: 700;
+  --bold-weight: 700;
+  --mention-weight: 700;
+  --table-header-weight: 700;
+  --blockquote-style: normal;
+  --blockquote-border-width: 2px;
+  --blockquote-padding: 0.75rem;
+  --link-decoration: none;
+  --link-decoration-color: transparent;
+  --link-decoration-color-hover: currentColor;
+  --code-font-size: 0.92em;
+  --code-radius: 3px;
+  --code-padding: 0.0625rem 0.3125rem;
+  --code-block-radius: 4px;
+  --code-block-font-size: var(--text-label);
+  --code-block-line-height: 1.5;
+  --table-radius: 0;
+  --highlight-radius: 2px;
+
+  /* Aqua blue: source list, menu and table selection. */
+  --mav-select: #2f6bd1;
+  --mav-select-top: #5a94e4;
+  --mav-select-bottom: #2862c8;
+  --mav-select-edge: #2459bb;
+  /* Aqua default push button: light blue with a black label, as it was until Yosemite. */
+  --mav-default-top: #d2e7fc;
+  --mav-default-mid: #8cc0f5;
+  --mav-default-bottom: #64a8f2;
+
+  --nav-item-active-background: var(--mav-select);
+  --nav-item-active-color: #ffffff;
+  --menu-item-hover-background: var(--mav-select);
+  --menu-item-hover-color: #ffffff;
+  --switch-checked-background: var(--mav-select);
+  --switch-checked-thumb: #ffffff;
+  --switch-border-color: rgb(0 0 0 / 0.2);
+  --checkbox-color: var(--mav-select);
+  --tooltip: #f7f7f7;
+  --tooltip-foreground: #000000;
+  --tooltip-shadow: 0 0 0 1px rgb(0 0 0 / 0.2), 0 2px 6px rgb(0 0 0 / 0.22);
+  --button-primary: #8cc0f5;
+  --button-primary-foreground: #000000;
+}
+
+.theme-light {
+  --app-shell: #e3e3e3;
+  --page-canvas: #ffffff;
+  --surface: #ffffff;
+  --surface-foreground: #141414;
+  --surface-raised: #ffffff;
+  --surface-hover: #eef2f7;
+  --surface-selected: #d4e2f7;
+  --surface-selected-foreground: #141414;
+  --surface-border: #c4c4c4;
+  --foreground: #141414;
+  --card-foreground: #141414;
+  --popover-foreground: #141414;
+  --primary: #141414;
+  --primary-foreground: #ffffff;
+  --secondary: #f1f1f1;
+  --secondary-foreground: #141414;
+  --muted: #f0f0f0;
+  --muted-foreground: #4f5967;
+  --faint-foreground: #6b737d;
+  --accent: #eef2f7;
+  --accent-foreground: #141414;
+  --border: #d5d5d5;
+  --input: #b0b0b0;
+  --ring: #3b99fc;
+  --sidebar: #e1e6ec;
+  --sidebar-foreground: #141414;
+  --sidebar-primary: #2a68cf;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #d6d6d6;
+  --sidebar-accent-foreground: #141414;
+  --sidebar-border: #b8b8b8;
+  --sidebar-ring: #3b99fc;
+  --brand: #2a68cf;
+  --brand-foreground: #ffffff;
+  --button-primary-border: #4a84cf;
+  --destructive: #c9342a;
+  --success: #3d9a2f;
+  --warning: #e5a01a;
+  --info: #2f78db;
+  --scrollbar-thumb: rgb(0 0 0 / 0.3);
+  --scrollbar-thumb-hover: rgb(0 0 0 / 0.5);
+
+  --surface-shadow: 0 1px 1px rgb(0 0 0 / 0.07);
+  --page-border-color: #b5b5b5;
+  --page-shadow: 0 1px 3px rgb(0 0 0 / 0.14);
+  --menu-shadow: 0 0 0 1px rgb(0 0 0 / 0.1), 0 6px 18px rgb(0 0 0 / 0.26);
+  --floating-shadow: 0 0 0 1px rgb(0 0 0 / 0.2), 0 22px 70px 4px rgb(0 0 0 / 0.42);
+  --floating-border-color: #b5b5b5;
+
+  --rail-item-color: #4e5765;
+  --rail-item-hover-background: #d8d8d8;
+  --rail-item-active-background: #c8c8c8;
+  --rail-item-active-color: #141414;
+  --nav-item-color: #141414;
+  --nav-item-hover-background: rgb(0 0 0 / 0.045);
+  --nav-item-hover-color: #141414;
+  --display-chip-pressed-background: #c9daf3;
+  --display-chip-pressed-color: #141414;
+  --switch-unchecked-background: #d2d2d2;
+  --switch-unchecked-thumb: #ffffff;
+
+  --issue-row-hover-background: #f2f5fa;
+  --issue-row-selected-background: #d4e2f7;
+  --issue-row-identifier-color: #4f5967;
+  --issue-group-header-background: #ececec;
+  --issue-group-header-hover-background: #e3e3e3;
+  --board-column-background: #eceff3;
+  --board-card-border-color: #c4c4c4;
+
+  /* Finder tag colours, introduced with Mavericks. */
+  --status-backlog: #8e8e93;
+  --status-todo: #6d7380;
+  --status-in-progress: #f0a22e;
+  --status-in-review: #4cae3c;
+  --status-done: #2f78db;
+  --status-blocked: #e5463d;
+  --status-cancelled: #8e8e93;
+  --priority-urgent: #e5463d;
+  --priority-high: #f0782e;
+  --priority-medium: #e5a01a;
+  --priority-low: #2f78db;
+  --priority-none: #8e8e93;
+
+  --list-marker-color: #4f5967;
+  --blockquote-border-color: #6f9ce0;
+  --blockquote-color: #2c4c84;
+  --hr-color: #d5d5d5;
+  --table-border-color: #d5d5d5;
+  --table-header-background: #f2f2f2;
+  --table-header-color: #141414;
+  --highlight-background: #fff2a8;
+
+  /* Xcode 5 "Default". */
+  --code-background: #f3f3f3;
+  --code-border-color: #dcdcdc;
+  --code-color: #141414;
+  --code-block-background: #fafafa;
+  --code-block-border: 1px solid #d9d9d9;
+  --code-block-color: #000000;
+  --code-keyword: #aa0d91;
+  --code-string: #c41a16;
+  --code-comment: #007400;
+  --code-number: #1c00cf;
+  --code-function: #2e0d6e;
+  --code-property: #836c28;
+  --code-variable: #3f6e74;
+  --code-type: #5c2699;
+  --code-deletion: #c41a16;
+  --code-tag: #aa0d91;
+  --code-punctuation: #000000;
+}
+
+.theme-dark {
+  --app-shell: #1e1f22;
+  --page-canvas: #28292c;
+  --surface: #2f3033;
+  --surface-foreground: #ececec;
+  --surface-raised: #323337;
+  --surface-hover: #37393d;
+  --surface-selected: #2f4161;
+  --surface-selected-foreground: #ffffff;
+  --surface-border: #46484d;
+  --foreground: #ececec;
+  --card-foreground: #ececec;
+  --popover-foreground: #ececec;
+  --primary: #ececec;
+  --primary-foreground: #1e1f22;
+  --secondary: #3a3b3f;
+  --secondary-foreground: #ececec;
+  --muted: #333438;
+  --muted-foreground: #a9afb8;
+  --faint-foreground: #8c929a;
+  --accent: #37393d;
+  --accent-foreground: #ececec;
+  --border: rgb(255 255 255 / 0.08);
+  --input: rgb(255 255 255 / 0.22);
+  --ring: #4aa3ff;
+  --sidebar: #2a2d32;
+  --sidebar-foreground: #ececec;
+  --sidebar-primary: #6ea8f7;
+  --sidebar-primary-foreground: #000000;
+  --sidebar-accent: #3a3c41;
+  --sidebar-accent-foreground: #ffffff;
+  --sidebar-border: rgb(255 255 255 / 0.1);
+  --sidebar-ring: #4aa3ff;
+  --brand: #6ea8f7;
+  --brand-foreground: #000000;
+  --button-primary-border: #5b93dc;
+  --destructive: #ff6b60;
+  --success: #62c554;
+  --warning: #f4b63a;
+  --info: #5a9cf0;
+  --scrollbar-thumb: rgb(255 255 255 / 0.25);
+  --scrollbar-thumb-hover: rgb(255 255 255 / 0.42);
+
+  --surface-shadow: 0 1px 2px rgb(0 0 0 / 0.35);
+  --page-border-color: rgb(0 0 0 / 0.6);
+  --page-shadow: 0 0 0 1px rgb(255 255 255 / 0.05), 0 2px 6px rgb(0 0 0 / 0.4);
+  --menu-shadow: 0 0 0 1px rgb(255 255 255 / 0.12), 0 8px 24px rgb(0 0 0 / 0.55);
+  --floating-shadow: 0 0 0 1px rgb(255 255 255 / 0.1), 0 22px 70px 4px rgb(0 0 0 / 0.7);
+  --floating-border-color: rgb(255 255 255 / 0.14);
+
+  --rail-item-color: #a9afb8;
+  --rail-item-hover-background: #2a2b2f;
+  --rail-item-active-background: #393b40;
+  --rail-item-active-color: #ffffff;
+  --nav-item-color: #ececec;
+  --nav-item-hover-background: rgb(255 255 255 / 0.05);
+  --nav-item-hover-color: #ffffff;
+  --display-chip-pressed-background: #2f4161;
+  --display-chip-pressed-color: #ffffff;
+  --switch-unchecked-background: #4a4c51;
+  --switch-unchecked-thumb: #d8d8d8;
+
+  --issue-row-hover-background: #2f3134;
+  --issue-row-selected-background: #2f4161;
+  --issue-row-identifier-color: #a9afb8;
+  --issue-group-header-background: #303135;
+  --issue-group-header-hover-background: #37393d;
+  --board-column-background: #2c2d31;
+  --board-card-background: #333438;
+  --board-card-border-color: #46484d;
+
+  --status-backlog: #98989d;
+  --status-todo: #a9afb8;
+  --status-in-progress: #f4b63a;
+  --status-in-review: #62c554;
+  --status-done: #5a9cf0;
+  --status-blocked: #ff6b60;
+  --status-cancelled: #98989d;
+  --priority-urgent: #ff6b60;
+  --priority-high: #ff9a4d;
+  --priority-medium: #f4b63a;
+  --priority-low: #5a9cf0;
+  --priority-none: #98989d;
+
+  --list-marker-color: #a9afb8;
+  --blockquote-border-color: #5a8fdc;
+  --blockquote-color: #a9c6f2;
+  --hr-color: rgb(255 255 255 / 0.12);
+  --table-border-color: rgb(255 255 255 / 0.12);
+  --table-header-background: #333438;
+  --table-header-color: #ececec;
+  --highlight-background: rgb(255 214 10 / 0.28);
+
+  /* Xcode 5 "Midnight". */
+  --code-background: rgb(255 255 255 / 0.07);
+  --code-border-color: rgb(255 255 255 / 0.1);
+  --code-color: #ececec;
+  --code-block-background: #141416;
+  --code-block-border: 1px solid rgb(255 255 255 / 0.08);
+  --code-block-color: #ffffff;
+  --code-keyword: #e74fae;
+  --code-string: #ff5a62;
+  --code-comment: #41cc45;
+  --code-number: #8f86ff;
+  --code-function: #4fc3e8;
+  --code-property: #d9a35f;
+  --code-variable: #23d98a;
+  --code-type: #36b4e0;
+  --code-deletion: #ff5a62;
+  --code-tag: #e74fae;
+  --code-punctuation: #d0d0d0;
+}
+
+/* Graphite, the other Appearance choice in System Preferences. */
+.theme-light[data-theme-option-appearance="graphite"],
+.theme-dark[data-theme-option-appearance="graphite"] {
+  --mav-select: #627385;
+  --mav-select-top: #8494a6;
+  --mav-select-bottom: #5b6c7f;
+  --mav-select-edge: #536274;
+  --mav-default-top: #eef1f4;
+  --mav-default-mid: #c3ccd5;
+  --mav-default-bottom: #a7b3bf;
+  --button-primary: #c3ccd5;
+  --button-primary-border: #7f8b98;
+  --ring: #7f93a8;
+  --sidebar-ring: #7f93a8;
+}
+
+.theme-light[data-theme-option-appearance="graphite"] {
+  --brand: #4f6074;
+  --sidebar-primary: #4f6074;
+  --sidebar: #e4e5e7;
+  --surface-selected: #dde2e8;
+  --issue-row-selected-background: #dde2e8;
+  --display-chip-pressed-background: #d6dce3;
+  --blockquote-border-color: #8796a8;
+  --blockquote-color: #3c4757;
+}
+
+.theme-dark[data-theme-option-appearance="graphite"] {
+  --brand: #a7b6c7;
+  --sidebar-primary: #a7b6c7;
+  --sidebar: #2c2d30;
+  --surface-selected: #3b4048;
+  --issue-row-selected-background: #3b4048;
+  --display-chip-pressed-background: #3b4048;
+  --blockquote-border-color: #7f8b98;
+  --blockquote-color: #c4ccd5;
+}
+
+/* The source list: a blue-grey sidebar, bold white selection. */
+:root [data-mc="sidebar"] {
+  background-color: var(--sidebar);
+}
+
+:root [data-mc="nav-item"][data-active="true"] {
+  font-weight: 700;
+  text-shadow: 0 1px 1px rgb(0 0 0 / 0.25);
+}
+
+/* Native checkboxes and the app's checkbox take the selection colour, not black. */
+:root input[type="checkbox"] {
+  accent-color: var(--mav-select);
+}
+
+:root [data-slot="checkbox"]:is([data-checked], [data-indeterminate]) {
+  border-color: var(--mav-select-edge);
+  background-color: var(--mav-select);
+  color: #ffffff;
+}
+
+/* Full-width menu highlights, as in every Mac menu. */
+:root :is([data-slot="dropdown-menu-content"], [data-slot="select-content"]) {
+  padding-inline: 0;
+  padding-block: 4px;
+}
+
+:root :is([data-slot="dropdown-menu-item"], [data-slot="select-item"]):focus {
+  text-shadow: 0 1px 1px rgb(0 0 0 / 0.2);
+}
+
+/* Square text fields with a soft inner top shadow. */
+.theme-light :is([data-slot="input"], [data-slot="textarea"]) {
+  box-shadow: inset 0 1px 1px rgb(0 0 0 / 0.1);
+}
+
+/* Tooltips: small, square, off-white with a black label, in both modes. */
+:root [data-slot="tooltip-content"] {
+  font-size: var(--text-caption);
+}
+
+/* Label chips get a little candy gloss and an edge. */
+:root [data-mc="label-chip"] {
+  box-shadow: inset 0 0 0 1px rgb(0 0 0 / 0.12);
+}
+
+/* Links are plain blue text and underline only on hover. */
+:root [data-mc="content"] a:hover {
+  text-decoration-line: underline;
+}
+
+/* ---------- Aqua gradients ---------- */
+
+/* Unified title bar and toolbar, flatter when the window is in the background. */
+.theme-light[data-theme-option-glossy] :is([data-mc="window-toolbar"], [data-mc="tab-bar"]) {
+  background-image: linear-gradient(#e9e9e9, #d1d1d1);
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.6), inset 0 -1px 0 #a9a9a9;
+}
+
+.theme-light[data-theme-option-glossy]:not(.is-focused) :is([data-mc="window-toolbar"], [data-mc="tab-bar"]) {
+  background-image: linear-gradient(#f6f6f6, #ececec);
+  box-shadow: inset 0 -1px 0 #cfcfcf;
+}
+
+.theme-dark[data-theme-option-glossy] :is([data-mc="window-toolbar"], [data-mc="tab-bar"]) {
+  background-image: linear-gradient(rgb(255 255 255 / 0.06), rgb(255 255 255 / 0));
+  box-shadow: inset 0 -1px 0 rgb(0 0 0 / 0.6);
+}
+
+/* Rail: the current space looks like a pressed toolbar button. */
+.theme-light[data-theme-option-glossy] [data-mc="app-rail"] [aria-current="page"] {
+  background-image: linear-gradient(#bdbdbd, #d0d0d0);
+  box-shadow: inset 0 1px 2px rgb(0 0 0 / 0.28), 0 1px 0 rgb(255 255 255 / 0.6);
+}
+
+.theme-dark[data-theme-option-glossy] [data-mc="app-rail"] [aria-current="page"] {
+  background-image: linear-gradient(rgb(0 0 0 / 0.25), rgb(0 0 0 / 0.05));
+  box-shadow: inset 0 1px 2px rgb(0 0 0 / 0.6), 0 1px 0 rgb(255 255 255 / 0.06);
+}
+
+/* Source list and menu selection. */
+:root[data-theme-option-glossy] [data-mc="nav-item"][data-active="true"],
+:root[data-theme-option-glossy] :is([data-slot="dropdown-menu-item"], [data-slot="select-item"]):focus {
+  background-image: linear-gradient(var(--mav-select-top), var(--mav-select-bottom));
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.18), inset 0 -1px 0 var(--mav-select-edge);
+}
+
+:root[data-theme-option-glossy]:not(.is-focused) [data-mc="nav-item"][data-active="true"] {
+  background-image: linear-gradient(#a9b4c3, #8a97a8);
+  box-shadow: none;
+}
+
+/* Group headers: the light grey bar of a grouped Finder list. */
+.theme-light[data-theme-option-glossy] [data-mc="issue-group-header"] {
+  background-image: linear-gradient(#f8f8f8, #e8e8e8);
+  box-shadow: inset 0 1px 0 #ffffff, inset 0 -1px 0 #cdcdcd;
+  text-shadow: 0 1px 0 rgb(255 255 255 / 0.85);
+}
+
+.theme-dark[data-theme-option-glossy] [data-mc="issue-group-header"] {
+  background-image: linear-gradient(rgb(255 255 255 / 0.05), rgb(255 255 255 / 0));
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.06), inset 0 -1px 0 rgb(0 0 0 / 0.45);
+  text-shadow: 0 -1px 0 rgb(0 0 0 / 0.5);
+}
+
+/* Push buttons. The default button is the light Aqua blue with a black label. */
+:root[data-theme-option-glossy] [data-slot="button"][data-variant="default"] {
+  border-color: var(--button-primary-border);
+  background-image: linear-gradient(var(--mav-default-top), var(--mav-default-mid) 50%, var(--mav-default-bottom));
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.5), 0 1px 1px rgb(0 0 0 / 0.15);
+}
+
+:root[data-theme-option-glossy] [data-slot="button"][data-variant="default"]:active {
+  background-image: linear-gradient(var(--mav-default-bottom), var(--mav-default-mid));
+}
+
+.theme-light[data-theme-option-glossy] [data-slot="button"]:is([data-variant="outline"], [data-variant="secondary"]) {
+  border-color: #b3b3b3 #b3b3b3 #9a9a9a;
+  background-image: linear-gradient(#ffffff, #f0f0f0);
+  box-shadow: 0 1px 1px rgb(0 0 0 / 0.08);
+}
+
+.theme-light[data-theme-option-glossy] [data-slot="button"]:is([data-variant="outline"], [data-variant="secondary"]):active {
+  background-image: linear-gradient(#d9d9d9, #e9e9e9);
+  box-shadow: inset 0 1px 2px rgb(0 0 0 / 0.15);
+}
+
+.theme-dark[data-theme-option-glossy] [data-slot="button"]:is([data-variant="outline"], [data-variant="secondary"]) {
+  border-color: rgb(255 255 255 / 0.16) rgb(255 255 255 / 0.16) rgb(0 0 0 / 0.5);
+  background-image: linear-gradient(rgb(255 255 255 / 0.12), rgb(255 255 255 / 0.03));
+  box-shadow: 0 1px 1px rgb(0 0 0 / 0.35);
+}
+
+/* Segmented control: grey track, the active segment in the selection colour. */
+.theme-light[data-theme-option-glossy] [data-slot="tabs-list"]:not([data-variant="line"]) {
+  border: 1px solid #b3b3b3;
+  background-image: linear-gradient(#ffffff, #ececec);
+}
+
+:root[data-theme-option-glossy] [data-slot="tabs-list"]:not([data-variant="line"]) [data-slot="tabs-trigger"][data-active] {
+  color: #ffffff;
+  background-color: var(--mav-select);
+  background-image: linear-gradient(var(--mav-select-top), var(--mav-select-bottom));
+  text-shadow: 0 1px 1px rgb(0 0 0 / 0.25);
+}
+
+/* Switches and checkboxes keep a hint of gloss. */
+:root[data-theme-option-glossy] [data-slot="switch"][data-checked],
+:root[data-theme-option-glossy] [data-slot="checkbox"]:is([data-checked], [data-indeterminate]) {
+  background-image: linear-gradient(var(--mav-select-top), var(--mav-select-bottom));
+}
+
+:root[data-theme-option-glossy] [data-mc="label-chip"] {
+  background-image: linear-gradient(rgb(255 255 255 / 0.22), rgb(255 255 255 / 0) 60%);
+}
+
+/* Menus, selects and popovers are slightly translucent, as since Leopard. */
+.theme-light[data-theme-option-glossy] :is([data-slot="dropdown-menu-content"], [data-slot="select-content"], [data-slot="popover-content"]) {
+  background-color: rgb(255 255 255 / 0.95);
+  backdrop-filter: blur(16px) saturate(1.4);
+}
+
+.theme-dark[data-theme-option-glossy] :is([data-slot="dropdown-menu-content"], [data-slot="select-content"], [data-slot="popover-content"]) {
+  background-color: rgb(40 41 44 / 0.95);
+  backdrop-filter: blur(16px) saturate(1.4);
+}
+
+/* ---------- Charcoal texture (dark mode) ---------- */
+
+.theme-dark[data-theme-option-noise] :is([data-mc="app-rail"], [data-mc="window-toolbar"], [data-mc="tab-bar"], [data-mc="bottom-bar"]) {
+  background-image: url(images/charcoal-noise.svg);
+  background-size: 180px 180px;
+}
+
+.theme-dark[data-theme-option-noise][data-theme-option-glossy] :is([data-mc="window-toolbar"], [data-mc="tab-bar"]) {
+  background-image: linear-gradient(rgb(255 255 255 / 0.06), rgb(255 255 255 / 0)), url(images/charcoal-noise.svg);
+  background-size: auto, 180px 180px;
+}
+
+@media (prefers-reduced-transparency: reduce) {
+  :root :is([data-slot="dropdown-menu-content"], [data-slot="select-content"], [data-slot="popover-content"]) {
+    backdrop-filter: none;
+  }
+}

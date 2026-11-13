@@ -1,0 +1,50 @@
+{
+  "apiVersion": 1,
+  "id": "mavericks",
+  "name": "Mavericks",
+  "author": "Jiayuan Zhang",
+  "version": "1.0.1",
+  "description": "OS X 10.9 Mavericks: Lucida Grande, Aqua blue selection, gradient push buttons, blue-grey source list, Xcode 5 code colours. Dark mode follows its HUD and Mission Control charcoal.",
+  "options": [
+    {
+      "id": "appearance",
+      "type": "select",
+      "label": { "en": "Appearance", "zh-Hans": "外观", "zh-Hant": "外觀", "ja": "外観" },
+      "description": {
+        "en": "As in System Preferences → General: the colour of selections, menus and default buttons.",
+        "zh-Hans": "同「系统偏好设置 → 通用」：选中项、菜单高亮和默认按钮的颜色。",
+        "zh-Hant": "同「系統偏好設定 → 一般」：選取項目、選單反白和預設按鈕的顏色。",
+        "ja": "「システム環境設定 → 一般」と同じく、選択項目・メニュー・デフォルトボタンの色。"
+      },
+      "default": "blue",
+      "choices": [
+        { "value": "blue", "label": { "en": "Blue", "zh-Hans": "蓝色", "zh-Hant": "藍色", "ja": "ブルー" }, "swatch": "#3a78d8" },
+        { "value": "graphite", "label": { "en": "Graphite", "zh-Hans": "石墨色", "zh-Hant": "石墨色", "ja": "グラファイト" }, "swatch": "#6f7f90" }
+      ]
+    },
+    {
+      "id": "glossy",
+      "type": "toggle",
+      "label": { "en": "Aqua gradients", "zh-Hans": "Aqua 渐变", "zh-Hant": "Aqua 漸層", "ja": "Aqua グラデーション" },
+      "description": {
+        "en": "Gradient buttons, selections, group headers and window chrome. Off gives the flat colours only.",
+        "zh-Hans": "按钮、选中项、分组标题和窗口边框使用渐变。关闭后只保留纯色。",
+        "zh-Hant": "按鈕、選取項目、分組標題和視窗邊框使用漸層。關閉後只保留純色。",
+        "ja": "ボタン、選択項目、グループ見出し、ウインドウ枠をグラデーションに。オフで単色のみ。"
+      },
+      "default": true
+    },
+    {
+      "id": "noise",
+      "type": "toggle",
+      "label": { "en": "Charcoal texture", "zh-Hans": "炭灰纹理", "zh-Hant": "炭灰紋理", "ja": "チャコールテクスチャ" },
+      "description": {
+        "en": "Dark mode: the fine noise Mavericks put behind Mission Control and Notification Center in place of linen.",
+        "zh-Hans": "深色模式：Mavericks 用来替换亚麻布纹、铺在调度中心和通知中心背后的细噪点。",
+        "zh-Hant": "深色模式：Mavericks 用來取代亞麻布紋、鋪在 Mission Control 和通知中心背後的細雜點。",
+        "ja": "ダークモード：Mavericks がリネンの代わりに Mission Control と通知センターの背景に使った細かいノイズ。"
+      },
+      "default": true
+    }
+  ]
+}
