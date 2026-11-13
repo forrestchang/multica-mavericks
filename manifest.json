@@ -3,7 +3,7 @@
   "id": "mavericks",
   "name": "Mavericks",
   "author": "Jiayuan Zhang",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "OS X 10.9 Mavericks: Lucida Grande, Aqua blue selection, gradient push buttons, blue-grey source list, Xcode 5 code colours. Dark mode follows its HUD and Mission Control charcoal.",
   "options": [
     {
@@ -51,6 +51,30 @@
         "zh-Hans": "对话框从工具栏下方滑出，上边是直角，而不是悬浮在窗口中央。",
         "zh-Hant": "對話框從工具列下方滑出，上緣是直角，而不是懸浮在視窗中央。",
         "ja": "ダイアログをウインドウ中央に浮かべず、上辺を角にしてツールバーの下から出します。"
+      },
+      "default": true
+    },
+    {
+      "id": "tags",
+      "type": "toggle",
+      "label": { "en": "Finder tags", "zh-Hans": "Finder 标签", "zh-Hant": "Finder 標籤", "ja": "Finder タグ" },
+      "description": {
+        "en": "Labels are a coloured dot in front of the name, as Finder tags, instead of a filled chip.",
+        "zh-Hans": "标签像 Finder 标签一样，显示为名字前的彩色圆点，而不是填满颜色的胶囊。",
+        "zh-Hant": "標籤像 Finder 標籤一樣，顯示為名稱前的彩色圓點，而不是填滿顏色的膠囊。",
+        "ja": "ラベルを塗りつぶしのチップではなく、Finder タグのように名前の前の色付きの点で表示します。"
+      },
+      "default": true
+    },
+    {
+      "id": "stripes",
+      "type": "toggle",
+      "label": { "en": "Alternating rows", "zh-Hans": "斑马纹", "zh-Hant": "斑馬紋", "ja": "行の色を交互に" },
+      "description": {
+        "en": "Issue lists alternate white and pale blue rows, as a Finder list view.",
+        "zh-Hans": "议题列表像 Finder 列表视图一样，白色和浅蓝色的行交替。",
+        "zh-Hant": "議題列表像 Finder 列表顯示方式一樣，白色和淺藍色的列交替。",
+        "ja": "Finder のリスト表示のように、課題リストの行を白と淡い青で交互に表示します。"
       },
       "default": true
     },

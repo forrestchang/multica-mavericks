@@ -339,6 +339,7 @@
 
 /* Highlight colour, the other half of System Preferences → General: text selection only. */
 .theme-light {
+  --mav-stripe: #f2f5fa;
   --mav-highlight: #b3d7ff;
   --mav-focus-edge: #6aa9f5;
   --mav-focus-glow: rgb(59 153 252 / 0.45);
@@ -346,6 +347,7 @@
 }
 
 .theme-dark {
+  --mav-stripe: rgb(255 255 255 / 0.03);
   --mav-highlight: #2d5a95;
   --mav-focus-edge: #4a8fe0;
   --mav-focus-glow: rgb(74 163 255 / 0.45);
@@ -460,6 +462,95 @@
   box-shadow: inset 0 1px 1px rgb(0 0 0 / 0.1), 0 0 0 3px var(--mav-focus-glow), 0 0 5px 3px var(--mav-focus-glow);
 }
 
+/* Source list section titles: small, bold, upper case, as FAVORITES and DEVICES in Finder. */
+:root [data-mc="sidebar"] [data-mc="panel-section"] h3 {
+  font-size: var(--text-micro);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+:root [data-mc="sidebar"] [data-mc="panel-section"] h3 button {
+  text-transform: inherit;
+}
+
+.theme-light [data-mc="sidebar"] [data-mc="panel-section"] h3 {
+  text-shadow: 0 1px 0 rgb(255 255 255 / 0.8);
+}
+
+/* Finder list view: alternating rows, and ticked rows in the solid selection colour. */
+:root[data-theme-option-stripes] [data-mc="issue-row"][data-parity="odd"]:not(:hover, [data-peeked], [data-selected="true"], [data-popup-open]) {
+  background-color: var(--mav-stripe);
+}
+
+:root [data-mc="issue-row"][data-selected="true"] {
+  --foreground: #ffffff;
+  --muted-foreground: rgb(255 255 255 / 0.85);
+  --faint-foreground: rgb(255 255 255 / 0.8);
+  --muted: rgb(255 255 255 / 0.25);
+  --issue-row-identifier-color: rgb(255 255 255 / 0.85);
+  --priority-urgent: #ffffff;
+  --priority-high: #ffffff;
+  --priority-medium: #ffffff;
+  --priority-low: #ffffff;
+  background-color: var(--mav-select);
+  color: #ffffff;
+  text-shadow: 0 1px 0 rgb(0 0 0 / 0.18);
+}
+
+:root[data-theme-option-glossy] [data-mc="issue-row"][data-selected="true"] {
+  background-image: linear-gradient(var(--mav-select-top), var(--mav-select-bottom));
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.18), inset 0 -1px 0 var(--mav-select-edge);
+}
+
+:root [data-mc="issue-row"][data-selected="true"] input[type="checkbox"] {
+  accent-color: #ffffff;
+}
+
+/* Finder tags: a coloured dot in front of the name instead of a filled chip. */
+:root[data-theme-option-tags] [data-mc="label-chip"] {
+  gap: 5px;
+  padding-inline: 0;
+  background: none;
+  box-shadow: none;
+  color: var(--muted-foreground);
+  font-weight: 400;
+}
+
+:root[data-theme-option-tags] [data-mc="label-chip"]::before {
+  content: "";
+  flex: none;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: var(--label-color);
+  box-shadow: inset 0 0 0 1px rgb(0 0 0 / 0.2);
+}
+
+:root[data-theme-option-tags] [data-mc="issue-row"][data-selected="true"] [data-mc="label-chip"]::before {
+  box-shadow: 0 0 0 1.5px #ffffff;
+}
+
+:root[data-theme-option-tags][data-theme-option-glossy] [data-mc="label-chip"]::before {
+  background-image: radial-gradient(circle at 50% 30%, rgb(255 255 255 / 0.55), rgb(255 255 255 / 0) 55%);
+}
+
+/* Toasts: Notification Center banners. Only typed toasts: a plain or custom
+   one draws its own card inside the item. */
+:root [data-mc="toaster"] li[data-type] {
+  border-color: transparent;
+  border-radius: 6px;
+  box-shadow: 0 0 0 1px rgb(0 0 0 / 0.14), 0 10px 30px rgb(0 0 0 / 0.3);
+}
+
+.theme-light[data-theme-option-glossy] [data-mc="toaster"] li[data-type] {
+  background-image: linear-gradient(#f4f4f4, #e4e4e4);
+}
+
+.theme-dark[data-theme-option-glossy] [data-mc="toaster"] li[data-type] {
+  background-image: linear-gradient(#3a3b3f, #2c2d31);
+}
+
 /* Messages: your own message is a blue bubble with a tail-side corner. */
 :root [data-mc="chat-message"][data-role="user"] [data-mc="chat-bubble"] {
   --foreground: #ffffff;
@@ -509,10 +600,12 @@
 }
 
 /* Sheets: dialogs drop from under the toolbar instead of floating mid-window.
-   The command palette keeps its own place, like Spotlight. */
-:root[data-theme-option-sheets] :is([data-slot="dialog-content"], [data-slot="alert-dialog-content"]):not(:has([data-slot="command"])) {
-  top: var(--mav-sheet-top);
-  translate: -50% 0;
+   A dialog is centred with top: 50% and translate: -50% -50%, and some pin
+   both with !important, so it moves with transform instead: half its own
+   height down undoes the centring. The command palette keeps its own place,
+   like Spotlight. */
+:root[data-theme-option-sheets] :is([data-slot="dialog-content"], [data-slot="alert-dialog-content"]):not(:has(> [data-slot="command"])) {
+  transform: translateY(calc(50% - 50dvh + var(--mav-sheet-top))) !important;
   transform-origin: top center;
   max-height: calc(100dvh - var(--mav-sheet-top) - 1rem);
   border-top-left-radius: 0;
@@ -536,6 +629,24 @@
 .theme-dark[data-theme-option-glossy] :is([data-mc="window-toolbar"], [data-mc="tab-bar"]) {
   background-image: linear-gradient(rgb(255 255 255 / 0.06), rgb(255 255 255 / 0));
   box-shadow: inset 0 -1px 0 rgb(0 0 0 / 0.6);
+}
+
+/* The page header is the window's unified toolbar. */
+.theme-light[data-theme-option-glossy] [data-mc="page-header"] {
+  border-bottom-color: transparent;
+  background-image: linear-gradient(#ebebeb, #d5d5d5);
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.7), inset 0 -1px 0 #a9a9a9;
+}
+
+.theme-light[data-theme-option-glossy]:not(.is-focused) [data-mc="page-header"] {
+  background-image: linear-gradient(#f6f6f6, #ececec);
+  box-shadow: inset 0 -1px 0 #cfcfcf;
+}
+
+.theme-dark[data-theme-option-glossy] [data-mc="page-header"] {
+  border-bottom-color: transparent;
+  background-image: linear-gradient(#36373b, #2b2c30);
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.06), inset 0 -1px 0 rgb(0 0 0 / 0.6);
 }
 
 /* Rail: the current space looks like a pressed toolbar button. */
@@ -621,7 +732,7 @@
   background-image: linear-gradient(var(--mav-select-top), var(--mav-select-bottom));
 }
 
-:root[data-theme-option-glossy] [data-mc="label-chip"] {
+:root[data-theme-option-glossy]:not([data-theme-option-tags]) [data-mc="label-chip"] {
   background-image: linear-gradient(rgb(255 255 255 / 0.22), rgb(255 255 255 / 0) 60%);
 }
 
