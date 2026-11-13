@@ -3,7 +3,7 @@
   "id": "mavericks",
   "name": "Mavericks",
   "author": "Jiayuan Zhang",
-  "version": "1.0.2",
+  "version": "1.1.0",
   "description": "OS X 10.9 Mavericks: Lucida Grande, Aqua blue selection, gradient push buttons, blue-grey source list, Xcode 5 code colours. Dark mode follows its HUD and Mission Control charcoal.",
   "options": [
     {
@@ -21,6 +21,38 @@
         { "value": "blue", "label": { "en": "Blue", "zh-Hans": "蓝色", "zh-Hant": "藍色", "ja": "ブルー" }, "swatch": "#3a78d8" },
         { "value": "graphite", "label": { "en": "Graphite", "zh-Hans": "石墨色", "zh-Hant": "石墨色", "ja": "グラファイト" }, "swatch": "#6f7f90" }
       ]
+    },
+    {
+      "id": "highlight",
+      "type": "select",
+      "label": { "en": "Highlight colour", "zh-Hans": "高亮颜色", "zh-Hant": "反白顏色", "ja": "強調表示色" },
+      "description": {
+        "en": "As in System Preferences → General: the colour behind selected text.",
+        "zh-Hans": "同「系统偏好设置 → 通用」：选中文字时背后的颜色。",
+        "zh-Hant": "同「系統偏好設定 → 一般」：選取文字時背後的顏色。",
+        "ja": "「システム環境設定 → 一般」と同じく、選択したテキストの背景色。"
+      },
+      "default": "blue",
+      "choices": [
+        { "value": "blue", "label": { "en": "Blue", "zh-Hans": "蓝色", "zh-Hant": "藍色", "ja": "ブルー" }, "swatch": "#b3d7ff" },
+        { "value": "gold", "label": { "en": "Gold", "zh-Hans": "金色", "zh-Hant": "金色", "ja": "ゴールド" }, "swatch": "#fbe39c" },
+        { "value": "graphite", "label": { "en": "Graphite", "zh-Hans": "石墨色", "zh-Hant": "石墨色", "ja": "グラファイト" }, "swatch": "#cdd4dd" },
+        { "value": "green", "label": { "en": "Green", "zh-Hans": "绿色", "zh-Hant": "綠色", "ja": "グリーン" }, "swatch": "#c3f0a9" },
+        { "value": "purple", "label": { "en": "Purple", "zh-Hans": "紫色", "zh-Hant": "紫色", "ja": "パープル" }, "swatch": "#e3c9f7" },
+        { "value": "red", "label": { "en": "Red", "zh-Hans": "红色", "zh-Hant": "紅色", "ja": "レッド" }, "swatch": "#ffc0bd" }
+      ]
+    },
+    {
+      "id": "sheets",
+      "type": "toggle",
+      "label": { "en": "Sheets", "zh-Hans": "表单式对话框", "zh-Hant": "表單式對話框", "ja": "シート" },
+      "description": {
+        "en": "Dialogs drop from under the toolbar with a square top edge, instead of floating in the middle of the window.",
+        "zh-Hans": "对话框从工具栏下方滑出，上边是直角，而不是悬浮在窗口中央。",
+        "zh-Hant": "對話框從工具列下方滑出，上緣是直角，而不是懸浮在視窗中央。",
+        "ja": "ダイアログをウインドウ中央に浮かべず、上辺を角にしてツールバーの下から出します。"
+      },
+      "default": true
     },
     {
       "id": "glossy",
