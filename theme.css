@@ -602,9 +602,10 @@
 /* Sheets: dialogs drop from under the toolbar instead of floating mid-window.
    A dialog is centred with top: 50% and translate: -50% -50%, and some pin
    both with !important, so it moves with transform instead: half its own
-   height down undoes the centring. The command palette keeps its own place,
-   like Spotlight. */
-:root[data-theme-option-sheets] :is([data-slot="dialog-content"], [data-slot="alert-dialog-content"]):not(:has(> [data-slot="command"])) {
+   height down undoes the centring, so only centred dialogs qualify: command
+   palettes keep their own place, like Spotlight, and full-screen viewers
+   (translate-y-0) stay put. */
+:root[data-theme-option-sheets] :is([data-slot="dialog-content"], [data-slot="alert-dialog-content"]):not(:has(> [cmdk-root]), [class~="translate-y-0"]) {
   transform: translateY(calc(50% - 50dvh + var(--mav-sheet-top))) !important;
   transform-origin: top center;
   max-height: calc(100dvh - var(--mav-sheet-top) - 1rem);
