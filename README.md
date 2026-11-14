@@ -17,7 +17,7 @@ Install it from **Settings → Appearance → Manage** in Multica, from the them
 - **Appearance**: Blue (default) or Graphite, as in System Preferences → General. Sets the colour of selections, menu highlights and the default button.
 - **Highlight colour**: Blue (default), Gold, Graphite, Green, Purple or Red, as in System Preferences → General. Sets the colour behind selected text.
 - **Sheets**: on by default. Dialogs drop from under the toolbar with a square top edge, instead of floating in the middle of the window. The command palette keeps its place, like Spotlight, and full-screen viewers stay full screen.
-- **Finder tags**: on by default. Labels become Finder's coloured tag dots with plain text instead of filled chips.
+- **Finder tags**: off by default. Labels become Finder's coloured tag dots with plain text instead of glossy chips.
 - **Alternating rows**: on by default. The issue list stripes every other row, like a Finder list view.
 - **Aqua gradients**: on by default. Gradient buttons, selections, group headers and the desktop title bar. Turn it off for the flat colours only.
 - **Charcoal texture**: on by default. In dark mode, the fine noise Mavericks put behind Mission Control in place of linen, drawn by an SVG in `images/`.

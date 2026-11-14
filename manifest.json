@@ -3,7 +3,7 @@
   "id": "mavericks",
   "name": "Mavericks",
   "author": "Jiayuan Zhang",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "description": "OS X 10.9 Mavericks: Lucida Grande, Aqua blue selection, gradient push buttons, blue-grey source list, Xcode 5 code colours. Dark mode follows its HUD and Mission Control charcoal.",
   "options": [
     {
@@ -64,7 +64,7 @@
         "zh-Hant": "標籤像 Finder 標籤一樣，顯示為名稱前的彩色圓點，而不是填滿顏色的膠囊。",
         "ja": "ラベルを塗りつぶしのチップではなく、Finder タグのように名前の前の色付きの点で表示します。"
       },
-      "default": true
+      "default": false
     },
     {
       "id": "stripes",
