@@ -3,7 +3,7 @@
   "id": "mavericks",
   "name": "Mavericks",
   "author": "Jiayuan Zhang",
-  "version": "1.2.2",
+  "version": "1.3.0",
   "description": "OS X 10.9 Mavericks: Lucida Grande, Aqua blue selection, gradient push buttons, blue-grey source list, Xcode 5 code colours. Dark mode follows its HUD and Mission Control charcoal.",
   "options": [
     {

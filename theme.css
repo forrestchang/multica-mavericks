@@ -91,6 +91,20 @@
   --tooltip-shadow: 0 0 0 1px rgb(0 0 0 / 0.2), 0 2px 6px rgb(0 0 0 / 0.22);
   --button-primary: #8cc0f5;
   --button-primary-foreground: #000000;
+
+  /* Finder tag colours for labels, custom statuses and select options. Finder
+     has no teal, indigo or pink; those sit between their neighbours. */
+  --palette-gray: #a4a4a9;
+  --palette-red: #f65a55;
+  --palette-orange: #f8a03c;
+  --palette-yellow: #f2d03c;
+  --palette-green: #6cc84e;
+  --palette-teal: #52c2c4;
+  --palette-blue: #4f9df5;
+  --palette-indigo: #8a8cf0;
+  --palette-purple: #c17fe0;
+  --palette-pink: #f37bb6;
+  --label-chip-color: #1a1a1a;
 }
 
 .theme-light {
@@ -483,7 +497,10 @@
   background-color: var(--mav-stripe);
 }
 
-:root [data-mc="issue-row"][data-selected="true"] {
+/* Ticked issue rows, and the highlighted row in the search palette and in
+   pickers (Spotlight and every Mac menu), are solid selection with white text. */
+:root [data-mc="issue-row"][data-selected="true"],
+:root :is([data-mc="palette-item"], [data-slot="command-item"])[data-selected="true"] {
   --foreground: #ffffff;
   --muted-foreground: rgb(255 255 255 / 0.85);
   --faint-foreground: rgb(255 255 255 / 0.8);
@@ -493,12 +510,17 @@
   --priority-high: #ffffff;
   --priority-medium: #ffffff;
   --priority-low: #ffffff;
+  --status-done: #ffffff;
+  --status-todo: #ffffff;
+  --status-backlog: rgb(255 255 255 / 0.85);
+  --status-cancelled: rgb(255 255 255 / 0.85);
   background-color: var(--mav-select);
   color: #ffffff;
   text-shadow: 0 1px 0 rgb(0 0 0 / 0.18);
 }
 
-:root[data-theme-option-glossy] [data-mc="issue-row"][data-selected="true"] {
+:root[data-theme-option-glossy] [data-mc="issue-row"][data-selected="true"],
+:root[data-theme-option-glossy] :is([data-mc="palette-item"], [data-slot="command-item"])[data-selected="true"] {
   background-image: linear-gradient(var(--mav-select-top), var(--mav-select-bottom));
   box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.18), inset 0 -1px 0 var(--mav-select-edge);
 }
@@ -605,7 +627,7 @@
    height down undoes the centring, so only centred dialogs qualify: command
    palettes keep their own place, like Spotlight, and full-screen viewers
    (translate-y-0) stay put. */
-:root[data-theme-option-sheets] :is([data-slot="dialog-content"], [data-slot="alert-dialog-content"]):not(:has(> [cmdk-root]), [class~="translate-y-0"]) {
+:root[data-theme-option-sheets] :is([data-slot="dialog-content"], [data-slot="alert-dialog-content"]):not(:has(> [data-mc="command-palette"], > [data-slot="command"]), [class~="translate-y-0"]) {
   transform: translateY(calc(50% - 50dvh + var(--mav-sheet-top))) !important;
   transform-origin: top center;
   max-height: calc(100dvh - var(--mav-sheet-top) - 1rem);
@@ -703,7 +725,8 @@
   box-shadow: 0 1px 1px rgb(0 0 0 / 0.08);
 }
 
-.theme-light[data-theme-option-glossy] [data-slot="button"]:is([data-variant="outline"], [data-variant="secondary"]):active {
+/* A push button stays pressed in while its menu or popover is open. */
+.theme-light[data-theme-option-glossy] [data-slot="button"]:is([data-variant="outline"], [data-variant="secondary"]):is(:active, [aria-expanded="true"]) {
   background-image: linear-gradient(#d9d9d9, #e9e9e9);
   box-shadow: inset 0 1px 2px rgb(0 0 0 / 0.15);
 }
@@ -714,16 +737,26 @@
   box-shadow: 0 1px 1px rgb(0 0 0 / 0.35);
 }
 
-/* Segmented control: grey track, the active segment in the selection colour. */
+.theme-dark[data-theme-option-glossy] [data-slot="button"]:is([data-variant="outline"], [data-variant="secondary"]):is(:active, [aria-expanded="true"]) {
+  background-image: linear-gradient(rgb(0 0 0 / 0.25), rgb(0 0 0 / 0.08));
+  box-shadow: inset 0 1px 2px rgb(0 0 0 / 0.5);
+}
+
+/* Segmented control: grey track, the active segment in the selection colour.
+   The colour sits on the sliding indicator, so it travels with the selection. */
 .theme-light[data-theme-option-glossy] [data-slot="tabs-list"]:not([data-variant="line"]) {
   border: 1px solid #b3b3b3;
   background-image: linear-gradient(#ffffff, #ececec);
 }
 
-:root[data-theme-option-glossy] [data-slot="tabs-list"]:not([data-variant="line"]) [data-slot="tabs-trigger"][data-active] {
-  color: #ffffff;
+:root[data-theme-option-glossy] [data-slot="tabs-list"]:not([data-variant="line"]) > [data-slot="tabs-indicator"] {
   background-color: var(--mav-select);
   background-image: linear-gradient(var(--mav-select-top), var(--mav-select-bottom));
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.18), inset 0 -1px 0 var(--mav-select-edge);
+}
+
+:root[data-theme-option-glossy] [data-slot="tabs-list"]:not([data-variant="line"]) [data-slot="tabs-trigger"][data-active] {
+  color: #ffffff;
   text-shadow: 0 1px 1px rgb(0 0 0 / 0.25);
 }
 
